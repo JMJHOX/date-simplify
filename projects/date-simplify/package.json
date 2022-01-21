@@ -1,0 +1,36 @@
+{
+  "name": "@jmjhox/date-simplify",
+  "version": "0.0.1",
+  "private":false,
+  "peerDependencies": {
+    "@angular/common": "13.0.0",
+    "@angular/core": "13.0.0"
+  },
+  "dependencies": {
+    "tslib": "2.3.0"
+  },
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/JMJHOX/date-simplify.git"
+  },
+  "author":{
+    "name":"JMJHOX",
+    "email":"josemiguelaparicio507@gmail.com"
+  },
+  "keywords": [
+    "date",
+    "date-time",
+    "time",
+    "date-simplify",
+    "simplified-date",
+    "simplied",
+    "date",
+    "calculator",
+    "ng",
+    "angular"
+  ],
+  "license":"MIT",
+  "bugs":{
+    "url":"https://github.com/JMJHOX/date-simplify/issues"
+  }
+}
