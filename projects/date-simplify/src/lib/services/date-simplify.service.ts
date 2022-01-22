@@ -1,32 +1,29 @@
-import { Injectable } from '@angular/core';
 import { format, isValid } from 'date-fns';
 import { RegexEnum } from '../commons/enums/regex.enum';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class DateSimplifyService {
-  public age = 0;
-  public DiffYear = 0;
-  public actualYear = 0;
-  public argsCheck = 'check';
-  constructor() { }
 
-  public async getRangeLimit(dateRangeRequest: any): Promise<string> {
-    if (dateRangeRequest.ChangeDate) {
-      this.actualYear = new Date(dateRangeRequest.ChangeDate).getFullYear()
+  private DiffYear = 0;
+  private actualYear = 0;
+
+ 
+
+  public getRangeLimit(dateRange: number, ChangeDate?: string ): string {
+
+    if (ChangeDate) {
+      this.actualYear = new Date(ChangeDate).getUTCFullYear()
     }
-    if (!dateRangeRequest.ChangeDate) {
-      this.actualYear = new Date().getFullYear()
+    if (!ChangeDate ) {
+      this.actualYear = new Date().getUTCFullYear()
     }
 
-
-    if (dateRangeRequest) {
-      if (dateRangeRequest.ageLimit == 0 || !dateRangeRequest) {
+    if (dateRange) {
+      if (dateRange <= 0 || !dateRange) {
         return 'Invalid Age'
       }
       const firstDayOfYear = new Date(this.actualYear, 0, 1);
-      this.DiffYear = Number(firstDayOfYear.getUTCFullYear() - Number(dateRangeRequest.ageLimit));
+      this.DiffYear = Number(firstDayOfYear.getUTCFullYear() - Number(dateRange));
       return format(new Date(this.DiffYear, 0, 1), 'yyyy')
     }
     return "Invalid Range";
@@ -48,35 +45,31 @@ export class DateSimplifyService {
     return 'Error'
   }
 
-  public dateIsValid(dateRequest: any) {
+  public dateIsValid(  day: string, month: string, year: string): boolean {
+    return isValid(new Date(`${day}/${month}/${year}`))
+
+  }
+  public dateIsValidFix( day: string, month: string, year: string): string {
+
     try {
-      if (dateRequest.args) {
-        this.argsCheck = dateRequest.args
+      var dayParser = Number(day)
+      var monthParser = Number(month)
+      var yearParser = Number(year)
+
+      if (Number(day) <= 0) {
+        dayParser = dayParser + 1;
+      }
+      if (Number(day) > 31) {
+        dayParser = dayParser - 1;
       }
 
-      var dayParser = Number(dateRequest.day)
-      var monthParser = Number(dateRequest.month)
-      var yearParser = Number(dateRequest.year)
-      if (this.argsCheck == "check") {
-        return isValid(new Date(`${dateRequest.day}/${dateRequest.month}/${dateRequest.year}`))
+      if (Number(month) <= 0) {
+        monthParser = monthParser + 1;
       }
-      if (this.argsCheck == "fixed") {
-        if (Number(dateRequest.day) <= 0) {
-          dayParser = dayParser + 1;
-        }
-        if (Number(dateRequest.day) >= 31) {
-          dayParser = dayParser - 1;
-        }
-
-        if (Number(dateRequest.month) <= 0) {
-          monthParser = monthParser + 1;
-        }
-        if (Number(dateRequest.month) >= 12) {
-          monthParser = monthParser - 1;
-        }
-        return `${dayParser}/${monthParser}/${yearParser}`
+      if (Number(month) > 12) {
+        monthParser = monthParser - 1;
       }
-
+      return `${dayParser}/${monthParser}/${yearParser}`
     }
     catch (e) {
 
@@ -86,6 +79,8 @@ export class DateSimplifyService {
 
 
   }
+
+
 }
 
 

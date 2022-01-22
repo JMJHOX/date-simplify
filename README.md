@@ -26,4 +26,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Further help
 
+
+
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# How to use it
+First, remember to use the library as a service in your app, importing this in any component:
+import { DateSimplifyService } from '@jmjhox/date-simplify';
+# getRangeLimit
+Is a method used to get the age limit of the user based on the actual date of the year or a custom date you want to use it from reference
+It has two parameters: 
+dateRange: number(the number you want to limit)
+ChangeDate?: string (the date you migh want to use from reference, the format is dd/mm/yyyy)
+
+
+# dateFormat
+Is a function that formats any date to yyyy/mm/dd , if for some reasons, the date is impossible to get, it returns the same date introduced.
+this.date_simply.dateFormat('12121998')
+# dateIsValid
+method to check if a date is valid or not. it only returns false or true.
+this.date_simply.dateIsValid('12','12','1998')
+
+# dateIsValidFix
+Checks if the date is valid, and attempts to fix the date automatically for yourself
+this.date_simply.dateIsValidFix('12','12','1998')
