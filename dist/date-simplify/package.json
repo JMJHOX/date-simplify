@@ -1,0 +1,56 @@
+{
+  "name": "@jmjhox/date-simplify",
+  "version": "0.0.6",
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "13.0.0",
+    "@angular/core": "13.0.0"
+  },
+  "dependencies": {
+    "tslib": "2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JMJHOX/date-simplify.git"
+  },
+  "author": {
+    "name": "JMJHOX",
+    "email": "josemiguelaparicio507@gmail.com"
+  },
+  "keywords": [
+    "date",
+    "date-time",
+    "time",
+    "date-simplify",
+    "simplified-date",
+    "simplied",
+    "date",
+    "calculator",
+    "ng",
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JMJHOX/date-simplify/issues"
+  },
+  "module": "fesm2015/jmjhox-date-simplify.mjs",
+  "es2020": "fesm2020/jmjhox-date-simplify.mjs",
+  "esm2020": "esm2020/jmjhox-date-simplify.mjs",
+  "fesm2020": "fesm2020/jmjhox-date-simplify.mjs",
+  "fesm2015": "fesm2015/jmjhox-date-simplify.mjs",
+  "typings": "jmjhox-date-simplify.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./jmjhox-date-simplify.d.ts",
+      "esm2020": "./esm2020/jmjhox-date-simplify.mjs",
+      "es2020": "./fesm2020/jmjhox-date-simplify.mjs",
+      "es2015": "./fesm2015/jmjhox-date-simplify.mjs",
+      "node": "./fesm2015/jmjhox-date-simplify.mjs",
+      "default": "./fesm2020/jmjhox-date-simplify.mjs"
+    }
+  },
+  "sideEffects": false
+}
