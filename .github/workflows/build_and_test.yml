@@ -2,7 +2,7 @@ name: workflow name
 
 on:
   workflow_call:
-        secrets:
+      secrets:
             SNYK_TOKEN:
                 required: true
  
@@ -43,17 +43,12 @@ jobs:
         with:
           name: deploy_coverage
           path: coverage
-      - name: Snyk
-        uses: snyk/actions@0.3.0
         
   security:
     runs-on: ubuntu-latest
     env:
       SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
     steps:
-      - run : |
-                echo 'printing envs'
-                env
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
