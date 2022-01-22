@@ -42,7 +42,7 @@ jobs:
   security:
     runs-on: ubuntu-latest
     env:
-      SNYK_TOKEN: ${{env.SNYK_TOKEN}}
+      SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
     steps:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
