@@ -3,7 +3,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "paths": {
+      "@jmjhox/date-simplify":["projects/date-simplify/src/public-api.ts"]
+    }
   },
   "files": [
     "src/main.ts",

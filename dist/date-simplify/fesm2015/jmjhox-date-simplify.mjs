@@ -6,10 +6,8 @@ RegexEnum.FORMAT_DATE = /([0-9]{2})([0-9]{2})([0-9]{4})/g;
 
 class DateSimplifyService {
     constructor() {
-        this.age = 0;
         this.DiffYear = 0;
         this.actualYear = 0;
-        this.argsCheck = 'check';
     }
     getRangeLimit(dateRange, ChangeDate) {
         if (ChangeDate) {
