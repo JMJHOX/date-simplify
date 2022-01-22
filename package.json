@@ -11,6 +11,7 @@
     "build:ds-dev": "ng build date-simplify",
     "build:ds-prod": "ng build date-simplify --prod",
     "build:ds": "ng build date-simplify"
+    
   },
   "private": false,
   "dependencies": {
