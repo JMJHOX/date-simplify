@@ -1,4 +1,0 @@
-export class RegexEnum {
-}
-RegexEnum.FORMAT_DATE = /([0-9]{2})([0-9]{2})([0-9]{4})/g;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVnZXguZW51bS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3Byb2plY3RzL2RhdGUtc2ltcGxpZnkvc3JjL2xpYi9jb21tb25zL2VudW1zL3JlZ2V4LmVudW0udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxPQUFPLFNBQVM7O0FBQ0oscUJBQVcsR0FBVyxpQ0FBaUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjbGFzcyBSZWdleEVudW0ge1xuICAgIHB1YmxpYyBzdGF0aWMgRk9STUFUX0RBVEU6IFJlZ0V4cCA9IC8oWzAtOV17Mn0pKFswLTldezJ9KShbMC05XXs0fSkvZztcbiAgfSJdfQ==
