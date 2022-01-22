@@ -50,7 +50,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Auth
-        run: snk auth SNK_TOKEN
+        run: snyk auth SNK_TOKEN
 
       - name: Snyk
         uses: snyk/actions@0.3.0
