@@ -39,20 +39,15 @@ jobs:
       - name: Snyk
         uses: snyk/actions@0.3.0
         
-        
-
   security:
-    name: Security scan Snyk
     runs-on: ubuntu-latest
-    env:
-      SNK_TOKEN: ${{ secrets.SNK_TOKEN }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Auth
-        run: snyk auth SNK_TOKEN
-
-      - name: Snyk
-        uses: snyk/actions@0.3.0
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNK_TOKEN }}
+        with:
+          command: monitor
         
 
