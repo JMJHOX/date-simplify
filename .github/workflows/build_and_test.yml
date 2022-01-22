@@ -1,12 +1,19 @@
 name: workflow name
 
 on:
+  workflow_call:
+        secrets:
+            SNYK_TOKEN:
+                required: true
+ 
   push:
     branches:
       - 'development'
   pull_request:
     branches: 
       - 'development'
+
+
 jobs:
   build:
     name: Build and Test
