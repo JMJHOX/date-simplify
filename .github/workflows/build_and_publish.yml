@@ -1,4 +1,4 @@
-name: workflow name
+name: build, test and publish
 
 
 on:
@@ -9,27 +9,32 @@ on:
  
   push:
     branches:
-      - 'development'
+      - 'master'
   pull_request:
     branches: 
-      - 'development'
+      - 'master'
 
 
 jobs:
   build:
     name: Build and Test
     runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      packages: write 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node 14.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@jmjhox'
       - name: Install dependencies
         run: npm i
       - name: Build
-        run: npm run build:ds
+        run: npm run build:ds-prod
       - name: Test
         run: npm run test:date-simplify
       - name: Archive build
@@ -44,6 +49,11 @@ jobs:
         with:
           name: deploy_coverage
           path: coverage
+          
+      - name: looking for library and publishing
+        run: cd dist/date-simplify && npm version patch && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
   security:
     runs-on: ubuntu-latest
