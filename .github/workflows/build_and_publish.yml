@@ -23,9 +23,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Use Node 14.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm i
       - name: Build
@@ -45,11 +46,6 @@ jobs:
           name: deploy_coverage
           path: coverage
       - name: publishing package
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm publish
         env:
