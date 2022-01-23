@@ -51,7 +51,7 @@ jobs:
           path: coverage
           
       - name: looking for library and publishing
-        run: cd dist/date-simplify && npm publish
+        run: cd dist/date-simplify && npm version <update_type> && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
