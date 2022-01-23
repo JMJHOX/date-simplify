@@ -51,6 +51,12 @@ jobs:
       SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
     steps:
       - uses: actions/checkout@master
+      - name: Use Node 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm i
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/node@master
  
