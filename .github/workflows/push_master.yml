@@ -7,8 +7,8 @@ on:
             SNYK_TOKEN:
                 required: true
  
-  push:
-    branches:
+  pull_request:
+    branches: 
       - 'master'
 
 
@@ -46,11 +46,6 @@ jobs:
         with:
           name: deploy_coverage
           path: coverage
-          
-      - name: looking for library and publishing
-        run: cd dist/date-simplify && npm version patch && npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
   security:
     runs-on: ubuntu-latest
