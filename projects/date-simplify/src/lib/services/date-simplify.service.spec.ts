@@ -1,11 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { format } from 'date-fns';
+
 
 import { DateSimplifyService } from './date-simplify.service';
 
 describe('DateSimplifyService', () => {
   let service: DateSimplifyService;
-
+   
   
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -51,8 +53,14 @@ describe('DateSimplifyService', () => {
 
 
   it('should return correct date for restrict users below 18 years old on 1990 on Local', () => {
-    const serviceResult= service.getDateRangeLimitLocal(18,'2009')
-    expect(serviceResult).toEqual('1990');
+    const limitAge= 18;
+    const limitYear= '2009';
+    const serviceResult= service.getDateRangeLimitLocal(limitAge, limitYear)
+      var actualYear = new Date(limitYear).getFullYear()
+      const firstDayOfYear = new Date(actualYear, 0, 1);
+      var DiffYear = Number(firstDayOfYear.getFullYear() - Number(limitAge));
+      var LocalYearObtained= format(new Date(DiffYear, 0, 1), 'yyyy')
+    expect(serviceResult).toEqual(LocalYearObtained);
   });
   it('should return correct date for restrict users below 18 years old on any date on Local', () => {
     const serviceResult= service.getDateRangeLimitLocal(5)
