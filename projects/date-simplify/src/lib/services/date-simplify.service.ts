@@ -9,7 +9,7 @@ export class DateSimplifyService {
 
 
 
-  public getRangeLimit(dateRange: number, ChangeDate?: string): string {
+  public getDateRangeLimitUTC(dateRange: number, ChangeDate?: string): string {
 
     if (ChangeDate) {
       this.actualYear = new Date(ChangeDate).getUTCFullYear()
@@ -27,10 +27,29 @@ export class DateSimplifyService {
       return format(new Date(this.DiffYear, 0, 1), 'yyyy')
     }
     return "Invalid Range";
-
-
   }
-  public dateFormat(documentFormat: string): string {
+
+  public getDateRangeLimitLocal(dateRange: number, ChangeDate?: string): string {
+
+    if (ChangeDate) {
+      this.actualYear = new Date(ChangeDate).getFullYear()
+    }
+    if (!ChangeDate) {
+      this.actualYear = new Date().getFullYear()
+    }
+
+    if (dateRange) {
+      if (dateRange <= 0 || !dateRange) {
+        return 'Invalid Age'
+      }
+      const firstDayOfYear = new Date(this.actualYear, 0, 1);
+      this.DiffYear = Number(firstDayOfYear.getFullYear() - Number(dateRange));
+      return format(new Date(this.DiffYear, 0, 1), 'yyyy')
+    }
+    return "Invalid Range";
+  }
+
+  public dateFormat(documentFormat: string): string | undefined {
     if (documentFormat) {
       if (documentFormat.match(RegexEnum.FORMAT_DATE)) {
         documentFormat = documentFormat.replace(RegexEnum.FORMAT_DATE, "$1/$2/$3");
@@ -42,29 +61,20 @@ export class DateSimplifyService {
 
       return format(new Date(documentFormat), 'yyyy/dd/MM')
     }
-    return 'Error'
+    return 'Error';
   }
 
   public dateIsValid(day: string, month: string, year: string): boolean {
     return isValid(new Date(`${day}/${month}/${year}`))
-
   }
-  public dateIsValidFix(day: string, month: string, year: string): string {
 
-    try {
+  public dateIsValidFix(day: string, month: string, year: string): string {
       let dayParser = this.dateCheck(Number(day),'day');
       let monthParser = this.dateCheck(Number(month),'month');
       let yearParser = Number(year)
       return `${dayParser}/${monthParser}/${yearParser}`
-    }
-    catch (e) {
-
-      return 'error';
-    }
-
-
-
   }
+
   private dateCheck(
     dateNumber: number,
     typeDate:string) {
