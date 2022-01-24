@@ -1,6 +1,6 @@
 {
   "name": "@jmjhox/date-simplify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private":false,
   "peerDependencies": {
     "@angular/common": "13.0.0",
