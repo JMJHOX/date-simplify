@@ -48,7 +48,7 @@ jobs:
           path: coverage
           
       - name: look & publish library
-        run: cd dist/date-simplify && npm 0.1.$GITHUB_RUN_NUMBER patch && npm publish
+        run: cd dist/date-simplify && npm version 1.0.$GITHUB_RUN_NUMBER patch && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
