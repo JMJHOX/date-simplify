@@ -1,20 +1,20 @@
 import { format, isValid } from 'date-fns';
 import { RegexEnum } from '../commons/enums/regex.enum';
-
+import { DateLimit } from '../commons/enums/constants';
 
 export class DateSimplifyService {
 
   private DiffYear = 0;
   private actualYear = 0;
 
- 
 
-  public getRangeLimit(dateRange: number, ChangeDate?: string ): string {
+
+  public getRangeLimit(dateRange: number, ChangeDate?: string): string {
 
     if (ChangeDate) {
       this.actualYear = new Date(ChangeDate).getUTCFullYear()
     }
-    if (!ChangeDate ) {
+    if (!ChangeDate) {
       this.actualYear = new Date().getUTCFullYear()
     }
 
@@ -45,30 +45,16 @@ export class DateSimplifyService {
     return 'Error'
   }
 
-  public dateIsValid(  day: string, month: string, year: string): boolean {
+  public dateIsValid(day: string, month: string, year: string): boolean {
     return isValid(new Date(`${day}/${month}/${year}`))
 
   }
-  public dateIsValidFix( day: string, month: string, year: string): string {
+  public dateIsValidFix(day: string, month: string, year: string): string {
 
     try {
-      var dayParser = Number(day)
-      var monthParser = Number(month)
-      var yearParser = Number(year)
-
-      if (Number(day) <= 0) {
-        dayParser = dayParser + 1;
-      }
-      if (Number(day) > 31) {
-        dayParser = dayParser - 1;
-      }
-
-      if (Number(month) <= 0) {
-        monthParser = monthParser + 1;
-      }
-      if (Number(month) > 12) {
-        monthParser = monthParser - 1;
-      }
+      let dayParser = this.dateCheck(Number(day),'day');
+      let monthParser = this.dateCheck(Number(month),'month');
+      let yearParser = Number(year)
       return `${dayParser}/${monthParser}/${yearParser}`
     }
     catch (e) {
@@ -79,8 +65,36 @@ export class DateSimplifyService {
 
 
   }
+  private dateCheck(
+    dateNumber: number,
+    typeDate:string) {
+    let numberParser = dateNumber;
 
+    if (dateNumber < DateLimit.DATE_LIMIT_MIN) {
+      dateNumber = Math.abs(numberParser);
+      numberParser = Math.abs(numberParser);
+    }
+    if (typeDate == 'day' && dateNumber > DateLimit.DATE_DAY_MAX) {
+      for (let i = 0; i < (dateNumber-DateLimit.DATE_DAY_MAX); i++) {
+        numberParser--;
+      }
+      return numberParser;
+    }
 
+    if (typeDate == 'month' && dateNumber > DateLimit.DATE_MONTH_MAX) {
+      for (let i = 0; i <  (dateNumber-DateLimit.DATE_MONTH_MAX); i++) {
+        numberParser = numberParser - 1;
+      }
+      return numberParser;
+    }
+
+    if (dateNumber == DateLimit.DATE_LIMIT_MIN) {
+      numberParser = numberParser + 1; 
+      return numberParser;
+    }
+    return numberParser;
+
+  }
 }
 
 

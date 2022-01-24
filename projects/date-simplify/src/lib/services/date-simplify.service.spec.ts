@@ -48,8 +48,22 @@ describe('DateSimplifyService', () => {
 
 
 
-  it('should return date format ', () => {
+  it('should return date format 1', () => {
     const serviceResult= service.dateFormat('12121998')
+    expect(serviceResult).toBe('1998/12/12');
+  });
+
+  it('should return date format 2', () => {
+    const serviceResult= service.dateFormat('12/12/1998')
+    expect(serviceResult).toBe('1998/12/12');
+  });
+
+  it('should return date format 3', () => {
+    const serviceResult= service.dateFormat('12.12.1998')
+    expect(serviceResult).toBe('1998/12/12');
+  });
+  it('should return date format 4', () => {
+    const serviceResult= service.dateFormat('1998.12.12')
     expect(serviceResult).toBe('1998/12/12');
   });
 
@@ -78,5 +92,13 @@ describe('DateSimplifyService', () => {
   it('should  fix bad date if date is wrong 2 ', () => {
     const serviceResult= service.dateIsValidFix('32','0','1998')
     expect(serviceResult).toBe('31/1/1998');
+  });
+  it('should  fix bad date if date is wrong 3 ', () => {
+    const serviceResult= service.dateIsValidFix('-32','0','1998')
+    expect(serviceResult).toBe('31/1/1998');
+  });
+  it('should return bad date if a error has occured ', () => {
+    const serviceResult= service.dateIsValidFix('12','1','1')
+    expect(serviceResult).toBe('12/1/1');
   });
 });
