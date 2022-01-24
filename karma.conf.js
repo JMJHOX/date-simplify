@@ -27,10 +27,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/date-workspace'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
+      reports: ['html', 'lcovonly', 'text-summary'],
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
