@@ -11,7 +11,5 @@ import { DateSimplifyService } from 'projects/date-simplify/src/public-api';
 export class AppComponent {
   title = 'date-workspace';
   constructor(private date_simply: DateSimplifyService) { }
-  ngOnInit(): void {
-  }
 
 }

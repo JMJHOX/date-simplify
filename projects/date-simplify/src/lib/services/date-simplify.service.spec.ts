@@ -26,25 +26,50 @@ describe('DateSimplifyService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+
   it('should return correct date for restrict users below 18 years old on 1991', () => {
-    const serviceResult= service.getRangeLimit(18,'2009')
+    const serviceResult= service.getDateRangeLimitUTC(18,'2009')
     expect(serviceResult).toEqual('1991');
   });
   it('should return correct date for restrict users below 18 years old on any date', () => {
-    const serviceResult= service.getRangeLimit(5)
+    const serviceResult= service.getDateRangeLimitUTC(5)
     const dateComp = String(new Date().getUTCFullYear() - Number(5))
     expect(serviceResult).toEqual(dateComp);
   });
 
   it('should return error when invalid age is introduced', () => {
-    const serviceResult= service.getRangeLimit(-1)
+    const serviceResult= service.getDateRangeLimitUTC(-1)
     expect(serviceResult).toBe('Invalid Age');
   });
 
   it('should return errorwhen invalid input is introduced', () => {
-    const serviceResult= service.getRangeLimit(NaN)
+    const serviceResult= service.getDateRangeLimitUTC(NaN)
     expect(serviceResult).toBe('Invalid Range');
   });
+
+
+
+  it('should return correct date for restrict users below 18 years old on 1990', () => {
+    const serviceResult= service.getDateRangeLimitLocal(18,'2009')
+    expect(serviceResult).toEqual('1990');
+  });
+  it('should return correct date for restrict users below 18 years old on any date', () => {
+    const serviceResult= service.getDateRangeLimitLocal(5)
+    const dateComp = String(new Date().getFullYear() - Number(5))
+    expect(serviceResult).toEqual(dateComp);
+  });
+
+  it('should return error when invalid age is introduced', () => {
+    const serviceResult= service.getDateRangeLimitLocal(-1)
+    expect(serviceResult).toBe('Invalid Age');
+  });
+
+  it('should return errorwhen invalid input is introduced', () => {
+    const serviceResult= service.getDateRangeLimitLocal(NaN)
+    expect(serviceResult).toBe('Invalid Range');
+  });
+
 
 
 
@@ -53,9 +78,14 @@ describe('DateSimplifyService', () => {
     expect(serviceResult).toBe('1998/12/12');
   });
 
+  it('should return error when is void', () => {
+    const serviceResult= service.dateFormat('')
+    expect(serviceResult).toBe('Error');
+  });
+
   it('should return date format 2', () => {
-    const serviceResult= service.dateFormat('12/12/1998')
-    expect(serviceResult).toBe('1998/12/12');
+    const serviceResult= service.dateFormat('11/12/1998')
+    expect(serviceResult).toBe('1998/12/11');
   });
 
   it('should return date format 3', () => {
@@ -63,8 +93,8 @@ describe('DateSimplifyService', () => {
     expect(serviceResult).toBe('1998/12/12');
   });
   it('should return date format 4', () => {
-    const serviceResult= service.dateFormat('1998.12.12')
-    expect(serviceResult).toBe('1998/12/12');
+    const serviceResult= service.dateFormat('1998.10.12')
+    expect(serviceResult).toBe('1998/12/10');
   });
 
   it('should return same date format when is invalid but formatted', () => {
@@ -94,8 +124,8 @@ describe('DateSimplifyService', () => {
     expect(serviceResult).toBe('31/1/1998');
   });
   it('should  fix bad date if date is wrong 3 ', () => {
-    const serviceResult= service.dateIsValidFix('-32','0','1998')
-    expect(serviceResult).toBe('31/1/1998');
+    const serviceResult= service.dateIsValidFix('-1','0','1998')
+    expect(serviceResult).toBe('1/1/1998');
   });
   it('should return bad date if a error has occured ', () => {
     const serviceResult= service.dateIsValidFix('12','1','1')
