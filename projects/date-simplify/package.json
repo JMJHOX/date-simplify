@@ -2,6 +2,13 @@
   "name": "@jmjhox/date-simplify",
   "version": "1.0.0",
   "private":false,
+  "scripts": {
+    "beta-version-patch": "npm version $(semver $npm_package_version -i prerelease --preid beta)",
+    "beta-version-minor": "npm version $(semver $npm_package_version -i preminor --preid beta)",
+    "beta-version-major": "npm version $(semver $npm_package_version -i premajor --preid beta)",
+    "rc-version": "npm version $(semver $npm_package_version -i prerelease --preid rc)",
+    "final-release": "npm version $(semver $npm_package_version -i)"
+  },
   "peerDependencies": {
     "@angular/common": "13.0.0",
     "@angular/core": "13.0.0"
