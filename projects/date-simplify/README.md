@@ -112,7 +112,7 @@ It should Return 12/12/1998 on string format
 ## Contributing
 Thank you for considering contributing to Date-Simplify! The contribution guide can be found in the [Date-Simplify documentation]()
 
-It should Return 12/12/1998 on string format
+
 
 # License
 
