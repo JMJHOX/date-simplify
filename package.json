@@ -10,7 +10,12 @@
     "test:date-simplify": "ng test date-simplify --watch=false --sourceMap=true --browsers=ChromeHeadless --code-coverage",
     "build:ds-dev": "ng build date-simplify",
     "build:ds-prod": "ng build date-simplify --prod",
-    "build:ds": "ng build date-simplify"
+    "build:ds": "ng build date-simplify",
+    "beta-version-patch": "npm version $(semver $npm_package_version -i prerelease --preid beta)",
+    "beta-version-minor": "npm version $(semver $npm_package_version -i preminor --preid beta)",
+    "beta-version-major": "npm version $(semver $npm_package_version -i premajor --preid beta)",
+    "rc-version": "npm version $(semver $npm_package_version -i prerelease --preid rc)",
+    "final-release": "npm version $(semver $npm_package_version -i)"
   },
   "private": false,
   "dependencies": {
@@ -25,6 +30,7 @@
     "@jmjhox/date-simplify": "^0.1.1",
     "date-fns": "2.28.0",
     "rxjs": "~7.5.2",
+    "semver": "^7.3.5",
     "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
