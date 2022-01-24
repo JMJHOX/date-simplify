@@ -1,4 +1,4 @@
-name: workflow name
+name: build and teste:dev
 
 
 on:
