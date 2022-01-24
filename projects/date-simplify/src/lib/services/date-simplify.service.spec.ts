@@ -28,44 +28,44 @@ describe('DateSimplifyService', () => {
   });
 
 
-  it('should return correct date for restrict users below 18 years old on 1991', () => {
+  it('should return correct date for restrict users below 18 years old on 1991 on UTC', () => {
     const serviceResult= service.getDateRangeLimitUTC(18,'2009')
     expect(serviceResult).toEqual('1991');
   });
-  it('should return correct date for restrict users below 18 years old on any date', () => {
+  it('should return correct date for restrict users below 18 years old on any date on UTC', () => {
     const serviceResult= service.getDateRangeLimitUTC(5)
     const dateComp = String(new Date().getUTCFullYear() - Number(5))
     expect(serviceResult).toEqual(dateComp);
   });
 
-  it('should return error when invalid age is introduced', () => {
+  it('should return error when invalid age is introduced on UTC', () => {
     const serviceResult= service.getDateRangeLimitUTC(-1)
     expect(serviceResult).toBe('Invalid Age');
   });
 
-  it('should return errorwhen invalid input is introduced', () => {
+  it('should return errorwhen invalid input is introduced on UTC', () => {
     const serviceResult= service.getDateRangeLimitUTC(NaN)
     expect(serviceResult).toBe('Invalid Range');
   });
 
 
 
-  it('should return correct date for restrict users below 18 years old on 1990', () => {
+  it('should return correct date for restrict users below 18 years old on 1990 on Local', () => {
     const serviceResult= service.getDateRangeLimitLocal(18,'2009')
     expect(serviceResult).toEqual('1990');
   });
-  it('should return correct date for restrict users below 18 years old on any date', () => {
+  it('should return correct date for restrict users below 18 years old on any date on Local', () => {
     const serviceResult= service.getDateRangeLimitLocal(5)
     const dateComp = String(new Date().getFullYear() - Number(5))
     expect(serviceResult).toEqual(dateComp);
   });
 
-  it('should return error when invalid age is introduced', () => {
+  it('should return error when invalid age is introduced on Local', () => {
     const serviceResult= service.getDateRangeLimitLocal(-1)
     expect(serviceResult).toBe('Invalid Age');
   });
 
-  it('should return errorwhen invalid input is introduced', () => {
+  it('should return errorwhen invalid input is introduced on Local', () => {
     const serviceResult= service.getDateRangeLimitLocal(NaN)
     expect(serviceResult).toBe('Invalid Range');
   });
