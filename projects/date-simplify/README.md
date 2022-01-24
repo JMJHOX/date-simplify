@@ -1,9 +1,12 @@
 # date-simplify
-Set of tools that simplifies calculations about dates on your angular app
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+Set of tools that simplifies calculations about dates on your angular 
+
+
+# Version
+This library is working with Angular 13
 
 # How to use it
-First,Yo have to import it as a  service in your Angular app, importing "DateSimplifyService":
+To get Started, you have to import "DateSimplifyService" as a service within your Angular app:
 ```
 import { DateSimplifyService } from '@jmjhox/date-simplify';
 ```
