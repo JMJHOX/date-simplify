@@ -57,7 +57,7 @@ describe('HelloComponent', () => {
 
   it('should return date format ISO 1', () => {
     const serviceResult = service.dateFormatISO('12121998');
-    expect(serviceResult).toBe('1998-12-12T05:00:00.000Z');
+    expect(serviceResult).toBe(new Date('1998-12-12').toISOString());
   });
 
   it('should return error when is void ISO', () => {
@@ -67,16 +67,16 @@ describe('HelloComponent', () => {
 
   it('should return date format 2 ISO', () => {
     const serviceResult = service.dateFormatISO('11/12/1998');
-    expect(serviceResult).toBe('1998-11-12T05:00:00.000Z');
+    expect(serviceResult).toBe(new Date('1998-11-12').toISOString());
   });
 
   it('should return date format 3 ISO', () => {
     const serviceResult = service.dateFormatISO('12.12.1998');
-    expect(serviceResult).toBe('1998-12-12T05:00:00.000Z');
+    expect(serviceResult).toBe(new Date('1998-12-12').toISOString());
   });
   it('should return date format 4 ISO', () => {
     const serviceResult = service.dateFormatISO('1998.10.12');
-    expect(serviceResult).toBe('1998-10-12T05:00:00.000Z');
+    expect(serviceResult).toBe(new Date('1998-10-12').toISOString());
   });
 
   it('should return same date format when is invalid but formatted NOT IN ISO', () => {
