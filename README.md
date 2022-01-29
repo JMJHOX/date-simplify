@@ -1,9 +1,10 @@
 # date-simplify
-Set of tools that simplifies calculations about dates and time  on your Angular App
+Set of tools that simplifies code about dates and time on your javascript & Typescript Applications!
 
 
 # Version
-This library is working with Angular 13
+## From Angular to javascript/Typescript
+This library was originally designed to be working for Angular 13, but now it has be re-design to be used by any project that has javascript or Typescrit.
 
 # Install
 You only have to install it using npm:
@@ -12,9 +13,9 @@ npm i @jmjhox/date-simplify
 ```
 
 ## How to use it
-To get Started, you have to import "DateSimplifyService" as a service within your Angular app:
+To get Started, you have to import "DateSimplify" as a service within your Angular app:
 ```
-import { DateSimplifyService } from '@jmjhox/date-simplify';
+import {DateSimplify} from '@jmjhox/date-simplify';
 ```
 
 In your app.module.ts
@@ -41,7 +42,7 @@ export class AppModule { }
 And finally, in your component where it will be used:
 ```
 import { Component, OnInit } from '@angular/core';
-import { DateSimplifyService } from 'projects/date-simplify/src/public-api';
+import { DateSimplify } from 'projects/date-simplify/src/public-api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -83,6 +84,14 @@ Is a function that formats any date to yyyy/mm/dd , if for some reasons, the dat
 this.date_simply.dateFormat('12121998')
 ```
 It should Return 12/12/1998 on string format
+
+# dateFormatISO
+Is a function that formats any date to yyyy/mm/dd ISO FORMAT , if for some reasons, the date is impossible to get, it returns the same date introduced.
+## How to use it
+```
+this.date_simply.dateFormat('12101998')
+```
+It should Return 1998-10-12T00:00:00.000Z on string format
 
 # dateIsValid
 method to check if a date is valid or not. it only returns false or true.
