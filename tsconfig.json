@@ -3,27 +3,34 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "target": "esnext",
     "paths": {
       "date-simplify": [
         "dist/date-simplify/date-simplify",
         "dist/date-simplify"
       ]
     },
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist/date-simplify",
     "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
-    "module": "es2020",
     "lib": [
       "es2020",
       "dom"
@@ -36,3 +43,4 @@
     "strictTemplates": true
   }
 }
+

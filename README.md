@@ -1,9 +1,9 @@
 # date-simplify
-Set of tools that simplifies calculations about dates and time  on your Angular App
+Set of tools that simplifies calculations about dates and time  on your Javascript & Typescript Applications!
 
 
 # Version
-This library is working with Angular 13
+This library was originally designed to be working for Angular 13, but now it has re-design to be working with all type of Javascript & Typescript Apps.
 
 # Install
 You only have to install it using npm:
@@ -12,9 +12,9 @@ npm i @jmjhox/date-simplify
 ```
 
 ## How to use it
-To get Started, you have to import "DateSimplifyService" as a service within your Angular app:
+To get Started, you have to import "DateSimplify" as a service within your Angular app:
 ```
-import { DateSimplifyService } from '@jmjhox/date-simplify';
+import {DateSimplify} from '@jmjhox/date-simplify';
 ```
 
 In your app.module.ts
