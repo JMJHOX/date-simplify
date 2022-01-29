@@ -8,6 +8,9 @@
   },
   "types": "types/index.d.ts",
   "main": "lib/index.js",
+  "files": [
+    "dist/date-simplify"
+  ],
   "scripts": {
     "lint": "eslint --ext .tsx,.ts,.js .",
     "typescript": "tsc --noEmit",
