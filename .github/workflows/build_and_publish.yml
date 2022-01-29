@@ -46,6 +46,10 @@ jobs:
         with:
           name: deploy_coverage
           path: coverage
+      - name: Auth User
+        run: |
+          git config --global user.name 'JMJOX'
+          git config --global user.email 'josemiguelaparicio507@gmail.com'
           
       - name: look & publish library
         run: cd dist/date-simplify && npm version 1.0.${{github.run_number}} && npm publish
