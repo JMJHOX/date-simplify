@@ -8,9 +8,6 @@
   },
   "types": "types/index.d.ts",
   "main": "lib/index.js",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "scripts": {
     "lint": "eslint --ext .tsx,.ts,.js .",
     "typescript": "tsc --noEmit",
