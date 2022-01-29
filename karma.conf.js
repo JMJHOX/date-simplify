@@ -7,7 +7,6 @@ module.exports = function(config) {
       preprocessors: {
           "**/*.ts": "karma-typescript" // *.tsx for React Jsx
       },
-      frameworks: ['jasmine'],
       plugins: [
           require('karma-jasmine'),
           require('karma-chrome-launcher'),
@@ -26,7 +25,6 @@ module.exports = function(config) {
       colors: true,
       logLevel: config.LOG_INFO,
       autoWatch: true,
-      browsers: ['Chrome'],
       singleRun: false,
       restartOnFileChange: true
   });

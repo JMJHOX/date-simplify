@@ -37,7 +37,7 @@ export function getDateRangeLimitLocal(dateRange: number, ChangeDate?: string): 
     }
 
     if (dateRange) {
-        if (dateRange <= 0 || !dateRange) {
+        if (dateRange <= 0) {
             return 'Invalid Age';
         }
         const firstDayOfYear = new Date(actualYear, 0, 1);
