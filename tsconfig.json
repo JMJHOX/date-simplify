@@ -7,7 +7,7 @@
     "allowUnusedLabels": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
@@ -17,7 +17,7 @@
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "target": "esnext",
+    "target": "es5",
     "paths": {
       "date-simplify": [
         "dist/date-simplify/date-simplify",
@@ -27,14 +27,11 @@
     "outDir": "./dist/date-simplify",
     "strict": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2017", "es7", "es6", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
