@@ -4,7 +4,7 @@ Set of tools that simplifies code about dates and time on your javascript & Type
 
 # Version
 ## From Angular to javascript/Typescript
-This library was originally designed to be working for Angular 13, but now it has be re-design to be used by any project that has javascript or Typescrit.
+This library was originally designed to be working for Angular 13, but now it has be re-design to be used by any project that has javascript or Typescript.
 
 # Install
 You only have to install it using npm:
