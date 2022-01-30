@@ -7,7 +7,7 @@
     "email": "josemiguelaparicio507@gmail.com"
   },
   "types": "types/index.d.ts",
-  "main": "dist/index.js",
+  "main": "index.js",
   "files": [
     "dist/date-simplify"
   ],
