@@ -7,7 +7,7 @@
     "email": "josemiguelaparicio507@gmail.com"
   },
   "types": "types/index.d.ts",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist/date-simplify"
   ],
@@ -15,7 +15,7 @@
     "lint": "eslint --ext .tsx,.ts,.js .",
     "typescript": "tsc --noEmit",
     "test:date-simplify": "jest --coverage ",
-    "prebuild": "del lib/ types/",
+    "prebuild": "del dist/ types/",
     "babel": "babel src --out-dir lib --extensions '.tsx,.ts,.js' --ignore '**/tests/**' --source-maps --delete-dir-on-start",
     "build:dev": "tsc --jsx react --noEmit",
     "build:ci": "tsc --jsx react"
