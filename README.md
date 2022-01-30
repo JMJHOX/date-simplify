@@ -15,34 +15,13 @@ npm i @jmjhox/date-simplify
 ## How to use it
 To get Started, you have to import "DateSimplify" as a service within your Angular app:
 ```
-import {DateSimplify} from '@jmjhox/date-simplify';
-```
-
-In your app.module.ts
-```
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { DateSimplifyService } from 'projects/date-simplify/src/public-api';
-
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [DateSimplifyService],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+import { dateSimplify } from '@jmjhox/date-simplify'
 ```
 
 And finally, in your component where it will be used:
 ```
 import { Component, OnInit } from '@angular/core';
-import { DateSimplify } from 'projects/date-simplify/src/public-api';
+import { dateSimplify } from '@jmjhox/date-simplify'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -50,9 +29,11 @@ import { DateSimplify } from 'projects/date-simplify/src/public-api';
 })
 export class AppComponent implements OnInit{
   title = 'date-workspace';
-  constructor(private date_simply:DateSimplifyService){}
+  constructor(){}
   ngOnInit(): void
-  {}
+  {
+     dateSimplify.dateFormat('12/12/1998')
+  }
 }
 ```
 # getDateRangeLimitUTC
@@ -81,7 +62,7 @@ ChangeDate?: string (the date you migh want to use from reference, the format is
 Is a function that formats any date to yyyy/mm/dd , if for some reasons, the date is impossible to get, it returns the same date introduced.
 ## How to use it
 ```
-this.date_simply.dateFormat('12121998')
+dateSimplify.dateFormat('12121998')
 ```
 It should Return 12/12/1998 on string format
 
@@ -89,7 +70,7 @@ It should Return 12/12/1998 on string format
 Is a function that formats any date to yyyy/mm/dd ISO FORMAT , if for some reasons, the date is impossible to get, it returns the same date introduced.
 ## How to use it
 ```
-this.date_simply.dateFormat('12101998')
+dateSimplify.dateFormat('12101998')
 ```
 It should Return 1998-10-12T00:00:00.000Z on string format
 
@@ -97,7 +78,7 @@ It should Return 1998-10-12T00:00:00.000Z on string format
 method to check if a date is valid or not. it only returns false or true.
 ## How to use it
 ```
-this.date_simply.dateIsValid('12','12','1998')
+dateSimplify.dateIsValid('12','12','1998')
 ```
 It should Return 12/12/1998 on string format
 
@@ -107,12 +88,12 @@ Checks if the date is valid, and attempts to fix the date automatically for your
 
 ```
 Format:
-dateIsValidFix(day: string, month: string, year: string)
+dateSimplify.dateIsValidFix(day: string, month: string, year: string)
 ```
 
 ## How to use it
 ```
-this.date_simply.dateIsValidFix('12','12','1998')
+dateSimplify.dateIsValidFix('12','12','1998')
 ```
 
 It should Return 12/12/1998 on string format
