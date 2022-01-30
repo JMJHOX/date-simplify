@@ -52,7 +52,7 @@ jobs:
           git config --global user.email 'josemiguelaparicio507@gmail.com'
           
       - name: look & publish library
-        run: npm version 1.0.${{github.run_number}} && npm publish
+        run: npm version 2.0.${{github.run_number}} && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
