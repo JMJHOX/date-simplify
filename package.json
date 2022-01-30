@@ -6,8 +6,8 @@
     "name": "JMJHOX",
     "email": "josemiguelaparicio507@gmail.com"
   },
-  "types": "types/index.d.ts",
-  "main": "index.js",
+  "types": "dist/date-simplify/index.d.ts",
+  "main": "dist/date-simplify/index.js",
   "files": [
     "dist/date-simplify"
   ],
