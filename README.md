@@ -13,7 +13,7 @@ npm i @jmjhox/date-simplify
 ```
 
 ## How to use it
-To get Started, you have to import "DateSimplify" as a service within your Angular app:
+To get Started, you have to import "DateSimplify" like this form within your Angular app:
 ```
 import { dateSimplify } from '@jmjhox/date-simplify'
 ```
