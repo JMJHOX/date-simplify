@@ -4,6 +4,11 @@ import { dateSimplify } from '..';
 describe('HelloComponent', () => {
   let service = dateSimplify;
 
+
+   /*
+   * getDateRangeLimitUTC
+   */
+
   it('should return correct date for restrict users below 18 years old on 1991 on UTC', () => {
     const serviceResult = service.getDateRangeLimitUTC(18, '2009');
     expect(serviceResult).toEqual('1991');
@@ -24,6 +29,11 @@ describe('HelloComponent', () => {
     expect(serviceResult).toBe('Invalid Range');
   });
 
+ /*
+  * getDateRangeLimitLocal
+ *
+ * 
+ */
 
 
   it('should return correct date for restrict users below 18 years old on 1990 on Local', () => {
@@ -52,6 +62,9 @@ describe('HelloComponent', () => {
     expect(serviceResult).toBe('Invalid Range');
   });
 
+ /*
+   * dateFormatISO
+   */
 
 
 
@@ -86,6 +99,9 @@ describe('HelloComponent', () => {
 
 
 
+  /*
+   * dateFormat
+   */
 
 
   it('should return date format 1', () => {
@@ -118,6 +134,11 @@ describe('HelloComponent', () => {
   });
 
 
+  /*
+   * dateIsValid
+   */
+
+
   it('should  check if date is correct ', () => {
     const serviceResult = service.dateIsValid('12', '12', '1998');
     expect(serviceResult).toBe(true);
@@ -145,4 +166,17 @@ describe('HelloComponent', () => {
     const serviceResult = service.dateIsValidFix('12', '1', '1');
     expect(serviceResult).toBe('12/1/1');
   });
+
+
+    /*
+   * dateFormatNew
+   */
+
+    it('should return date format 1', () => {
+      const serviceResult = service.dateFormatNew('1998/02/23','ddMMyyyy','')
+      expect(serviceResult).toBe('1998/12/12');
+    });
+
+    
+
 });
