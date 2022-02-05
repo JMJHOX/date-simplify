@@ -62,38 +62,39 @@ export function dateFormat(documentFormat: string): string | undefined {
     return 'Error';
 }
 
-export function dateFormatNew(documentFormat: string, formatStyle: string, formatSeparation = ''): string {
 
-    switch (checkDateMatch(formatStyle)) {
-        case 'ddMMyyyy': {
+// export function dateFormatNew(documentFormat: string, formatStyle: string, formatSeparation = ''): string {
 
-            break;
-        }
-        case 'dd-MM-yyyy': {
-            break;
-        }
-        case 'dd/MM/yyyy': {
-            break;
-        }
-        default: {
-            break;
-        }
-    }
-}
-function checkDateMatch(documentRequest: string): string {
-    if (documentRequest.match(RegexEnum.FORMAT_DATE)) {
-        return 'ddMMyyyy'
-    }
-    if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_VERTICAL_SLASH)) {
-        return 'dd-MM-yyyy'
-    }
-    if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_DIAGONAL_SLASH)) {
-        return 'dd/MM/yyyy'
-    }
-    return 'error'
+//     switch (checkDateMatch(formatStyle)) {
+//         case 'ddMMyyyy': {
+
+//             break;
+//         }
+//         case 'dd-MM-yyyy': {
+//             break;
+//         }
+//         case 'dd/MM/yyyy': {
+//             break;
+//         }
+//         default: {
+//             break;
+//         }
+//     }
+// }
+// function checkDateMatch(documentRequest: string): string {
+//     if (documentRequest.match(RegexEnum.FORMAT_DATE)) {
+//         return 'ddMMyyyy'
+//     }
+//     if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_VERTICAL_SLASH)) {
+//         return 'dd-MM-yyyy'
+//     }
+//     if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_DIAGONAL_SLASH)) {
+//         return 'dd/MM/yyyy'
+//     }
+//     return 'error'
 
 
-}
+// }
 
 export function dateFormatISO(documentFormat: string): string | undefined {
     if (documentFormat) {
