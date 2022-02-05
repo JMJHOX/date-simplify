@@ -1,0 +1,5 @@
+src/tests/**.spec.ts
+src/tests
+tests
+dist/date-simplify/tests/**.spec.ts
+tests/**.spec.ts
