@@ -172,10 +172,10 @@ describe('HelloComponent', () => {
    * dateFormatNew
    */
 
-    // it('should return date format 1', () => {
-    //   const serviceResult = service.dateFormatNew('1998/02/23','ddMMyyyy','')
-    //   expect(serviceResult).toBe('1998/12/12');
-    // });
+    it('should return date format new date', () => {
+      const serviceResult = service.dateFormatNew('02/23/1998','ddMMyyyy')
+      expect(serviceResult).toBe('02231998');
+    });
 
     
 

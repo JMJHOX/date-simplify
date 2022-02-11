@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.tsx"],"names":[],"mappings":";;;;;;;AAIA","sourcesContent":["/*\n * Public API Surface of date-simplify\n */\n\nimport * as dateSimplify from './date-simplify/DateSimplifyService';\nexport { dateSimplify };"],"file":"index.js"}

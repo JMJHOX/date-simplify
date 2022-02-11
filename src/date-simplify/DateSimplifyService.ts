@@ -1,5 +1,5 @@
 import { format, isValid } from 'date-fns';
-import { DateLimit } from '../commons/constants';
+import { checkDateMatch, dateCheck, dateSplitter } from '../commons/utils';
 import { RegexEnum } from '../commons/regex.enum';
 
 
@@ -63,38 +63,31 @@ export function dateFormat(documentFormat: string): string | undefined {
 }
 
 
-// export function dateFormatNew(documentFormat: string, formatStyle: string, formatSeparation = ''): string {
+export function dateFormatNew(dateRequest: string, formatStyle: string): string {
 
-//     switch (checkDateMatch(formatStyle)) {
-//         case 'ddMMyyyy': {
-
-//             break;
-//         }
-//         case 'dd-MM-yyyy': {
-//             break;
-//         }
-//         case 'dd/MM/yyyy': {
-//             break;
-//         }
-//         default: {
-//             break;
-//         }
-//     }
-// }
-// function checkDateMatch(documentRequest: string): string {
-//     if (documentRequest.match(RegexEnum.FORMAT_DATE)) {
-//         return 'ddMMyyyy'
-//     }
-//     if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_VERTICAL_SLASH)) {
-//         return 'dd-MM-yyyy'
-//     }
-//     if (documentRequest.match(RegexEnum.FORMAT_DATE_WITH_DIAGONAL_SLASH)) {
-//         return 'dd/MM/yyyy'
-//     }
-//     return 'error'
+    let [day, month, year] = dateSplitter(dateRequest)
 
 
-// }
+    switch (formatStyle) {
+        case 'ddMMyyyy': {
+            console.log("a")
+            return `${day}${month}${year}`
+        }
+        case 'dd-MM-yyyy': {
+            console.log("b")
+            return `${day}-${month}-${year}`
+        }
+        case 'dd/MM/yyyy': {
+            console.log("c")
+            return `${day}/${month}/${year}`
+        }
+        default: {
+            console.log("d")
+            return dateRequest
+        }
+    }
+}
+
 
 export function dateFormatISO(documentFormat: string): string | undefined {
     if (documentFormat) {
@@ -121,35 +114,6 @@ export function dateIsValidFix(day: string, month: string, year: string): string
     return `${dayParser}/${monthParser}/${yearParser}`;
 }
 
-function dateCheck(
-    dateNumber: number,
-    typeDate: string) {
-    let numberParser = dateNumber;
 
-    if (dateNumber < DateLimit.DATE_LIMIT_MIN) {
-        dateNumber = Math.abs(numberParser);
-        numberParser = Math.abs(numberParser);
-    }
-    if (typeDate == 'day' && dateNumber > DateLimit.DATE_DAY_MAX) {
-        for (let i = 0; i < (dateNumber - DateLimit.DATE_DAY_MAX); i++) {
-            numberParser--;
-        }
-        return numberParser;
-    }
-
-    if (typeDate == 'month' && dateNumber > DateLimit.DATE_MONTH_MAX) {
-        for (let i = 0; i < (dateNumber - DateLimit.DATE_MONTH_MAX); i++) {
-            numberParser = numberParser - 1;
-        }
-        return numberParser;
-    }
-
-    if (dateNumber == DateLimit.DATE_LIMIT_MIN) {
-        numberParser = numberParser + 1;
-        return numberParser;
-    }
-    return numberParser;
-
-}
 
 
