@@ -7,9 +7,6 @@ on:
             SNYK_TOKEN:
                 required: true
  
-  push:
-    branches:
-      - 'development'
   pull_request:
     branches: 
       - 'development'

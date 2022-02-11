@@ -9,7 +9,7 @@ on:
  
   push:
     branches:
-      - 'master'
+      - 'development'
 
 
 jobs:
@@ -48,11 +48,11 @@ jobs:
           path: coverage
       - name: Auth User
         run: |
-          git config --global user.name 'JMJOX'
+          git config --global user.name 'JMJHOX'
           git config --global user.email 'josemiguelaparicio507@gmail.com'
           
       - name: look & publish library
-        run: npm version 2.0.${{github.run_number}} && npm publish
+        run: npm version 2.0-beta.${{github.run_number}} && npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
