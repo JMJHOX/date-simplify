@@ -1,5 +1,5 @@
 import { format, isValid } from 'date-fns';
-import { checkDateMatch, dateCheck, dateSplitter } from '../commons/utils';
+import { dateCheck, dateSplitter } from '../commons/utils';
 import { RegexEnum } from '../commons/regex.enum';
 
 
