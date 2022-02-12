@@ -63,44 +63,6 @@ describe('HelloComponent', () => {
 
 
 
-
-
-
-  /*
-   * dateFormat
-   */
-
-
-  test('should return date format 1', () => {
-    const serviceResult = service.dateFormat('12121998');
-    expect(serviceResult).toBe('1998/12/12');
-  });
-
-  test('should return error when is void', () => {
-    const serviceResult = service.dateFormat('');
-    expect(serviceResult).toBe('Error');
-  });
-
-  test('should return date format 2', () => {
-    const serviceResult = service.dateFormat('11/12/1998');
-    expect(serviceResult).toBe('1998/12/11');
-  });
-
-  test('should return date format 3', () => {
-    const serviceResult = service.dateFormat('12.12.1998');
-    expect(serviceResult).toBe('1998/12/12');
-  });
-  test('should return date format 4', () => {
-    const serviceResult = service.dateFormat('1998.10.12');
-    expect(serviceResult).toBe('1998/12/10');
-  });
-
-  test('should return same date format when is invalid but formatted', () => {
-    const serviceResult = service.dateFormat('00121998');
-    expect(serviceResult).toBe('00/12/1998');
-  });
-
-
   /*
    * dateIsValid
    */
