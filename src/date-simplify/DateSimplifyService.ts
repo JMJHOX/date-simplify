@@ -3,10 +3,9 @@ import { dateCheck, dateSplitter } from '../commons/utils';
 
 
 
-export function getAgeLimitUTC(dateRange: number, ChangeDate?: string): string {
+export function getAgeLimitOnUTC(dateRange: number, ChangeDate?: string): string {
     let DiffYear = 0;
     let actualYear = 0;
-
     if (ChangeDate) {
         actualYear = new Date(ChangeDate).getUTCFullYear();
     }
@@ -25,7 +24,7 @@ export function getAgeLimitUTC(dateRange: number, ChangeDate?: string): string {
     return "Invalid Range";
 }
 
-export function getAgeLimitLocal(dateRange: number, ChangeDate?: string): string {
+export function getAgeLimitOnLocal(dateRange: number, ChangeDate?: string): string {
     let DiffYear = 0;
     let actualYear = 0;
     if (ChangeDate) {
