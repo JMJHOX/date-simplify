@@ -96,20 +96,9 @@ export function dateFormatNew(dateRequest: string, formatStyle: string): string 
 }
 
 
-export function dateFormatISO(documentFormat: string): string | undefined {
-    if (documentFormat) {
-        if (documentFormat.match(RegexEnum.FORMAT_DATE)) {
-            documentFormat = documentFormat.replace(RegexEnum.FORMAT_DATE, "$1/$2/$3");
 
-        }
-        if (!isValid(new Date(documentFormat))) {
-            return documentFormat;
-        }
 
-        return new Date(documentFormat).toISOString();
-    }
-    return 'Error';
-}
+
 export function dateIsValid(day: string, month: string, year: string): boolean {
     return isValid(new Date(`${day}/${month}/${year}`));
 }

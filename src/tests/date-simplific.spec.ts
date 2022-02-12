@@ -61,40 +61,8 @@ describe('HelloComponent', () => {
     expect(serviceResult).toBe('Invalid Range');
   });
 
- /*
-   * dateFormatISO
-   */
 
 
-
- test('should return date format ISO 1', () => {
-    const serviceResult = service.dateFormatISO('12121998');
-    expect(serviceResult).toBe(new Date('1998-12-12').toISOString());
-  });
-
-  test('should return error when is void ISO', () => {
-    const serviceResult = service.dateFormatISO('');
-    expect(serviceResult).toBe('Error');
-  });
-
-  test('should return date format 2 ISO', () => {
-    const serviceResult = service.dateFormatISO('11/12/1998');
-    expect(serviceResult).toBe(new Date('1998-11-12').toISOString());
-  });
-
-  test('should return date format 3 ISO', () => {
-    const serviceResult = service.dateFormatISO('12.12.1998');
-    expect(serviceResult).toBe(new Date('1998-12-12').toISOString());
-  });
-  test('should return date format 4 ISO', () => {
-    const serviceResult = service.dateFormatISO('1998.10.12');
-    expect(serviceResult).toBe(new Date('1998-10-12').toISOString());
-  });
-
-  test('should return same date format when is invalid but formatted NOT IN ISO', () => {
-    const serviceResult = service.dateFormatISO('00121998');
-    expect(serviceResult).toBe('00/12/1998');
-  });
 
 
 
@@ -218,7 +186,7 @@ describe('HelloComponent', () => {
 
     test('should return date format new function date UNIX 1', () => {
       const serviceResult = service.dateFormatNew('02-23-1998','UNIX')
-      expect(serviceResult).toBe(888192000);
+      expect(serviceResult).toBe(888192000000);
     });
 
 });
