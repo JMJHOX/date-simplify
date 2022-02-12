@@ -1,5 +1,5 @@
 import { format, isValid } from 'date-fns';
-import { dateCheck, dateSplitter } from '../commons/utils';
+import { dateCheck, dateSplitter, unFormtCheck, unformtJointer } from '../commons/utils';
 import { RegexEnum } from '../commons/regex.enum';
 
 
@@ -49,10 +49,10 @@ export function getDateRangeLimitLocal(dateRange: number, ChangeDate?: string): 
 
 export function dateFormat(documentFormat: string): string | undefined {
     if (documentFormat) {
-        if (documentFormat.match(RegexEnum.FORMAT_DATE)) {
-            documentFormat = documentFormat.replace(RegexEnum.FORMAT_DATE, "$1/$2/$3");
-
+        if (unFormtCheck(documentFormat)) {
+            documentFormat =  unformtJointer(documentFormat);
         }
+
         if (!isValid(new Date(documentFormat))) {
             return documentFormat;
         }
@@ -63,26 +63,33 @@ export function dateFormat(documentFormat: string): string | undefined {
 }
 
 
-export function dateFormatNew(dateRequest: string, formatStyle: string): string {
+export function dateFormatNew(dateRequest: string, formatStyle: string): string | number {
 
     let [day, month, year] = dateSplitter(dateRequest)
 
 
     switch (formatStyle) {
         case 'ddMMyyyy': {
-            console.log("a")
+           
             return `${day}${month}${year}`
         }
         case 'dd-MM-yyyy': {
-            console.log("b")
+        
             return `${day}-${month}-${year}`
         }
         case 'dd/MM/yyyy': {
-            console.log("c")
+           
             return `${day}/${month}/${year}`
         }
+        case 'ISO': {
+            return new Date( `${day}/${month}/${year}`).toISOString()
+        }
+        case 'UNIX': {
+            
+            return new Date(`${day}/${month}/${year}`).getTime()
+        }
         default: {
-            console.log("d")
+       
             return dateRequest
         }
     }

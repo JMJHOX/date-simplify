@@ -79,7 +79,7 @@
       "<rootDir>/types/",
       "<rootDir>/lib/"
     ],
-    "testRegex": "/tests/.*\\.(test|spec)\\.(js|tsx?)$"
+    "testRegex": "/tests/.*\\.(test|spec).ts"
   },
   "eslintConfig": {
     "extends": "satya164"

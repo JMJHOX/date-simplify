@@ -16,7 +16,7 @@ export function checkDateMatch(documentRequest: string): string {
 
 }
 
-export function dateCheck(dateNumber: number, typeDate: string):string {
+export function dateCheck(dateNumber: number, typeDate: string): string {
     let numberParser = dateNumber;
 
     if (dateNumber < DateLimit.DATE_LIMIT_MIN) {
@@ -44,22 +44,32 @@ export function dateCheck(dateNumber: number, typeDate: string):string {
     return String(numberParser);
 
 }
-export function dateSplitter(dateData:string):String[]{
+export function dateSplitter(dateData: string): string[] {
 
     if (dateData.match(RegexEnum.FORMAT_DATE)) {
-        console.log("splitted")
-        return dateData.split(RegexSplitter.FORMAT_SPLITTER_DATE)
+
+        return [dateData.slice(0, 2), dateData.slice(2, 4), dateData.slice(4, 10)];
     }
     if (dateData.match(RegexEnum.FORMAT_DATE_WITH_VERTICAL_SLASH)) {
-        console.log("splitted")
+
         return dateData.split(RegexSplitter.FORMAT_SPLITTER_VERTICAL_SLASH)
     }
     if (dateData.match(RegexEnum.FORMAT_DATE_WITH_DIAGONAL_SLASH)) {
-        console.log("splitted")
+
         return dateData.split(RegexSplitter.FORMAT_SPLITTER_DIAGONAL_SLASH)
     }
-    console.log("splittednt")
+
 
     return dateData.split(RegexSplitter.FORMAT_SPLITTER_DATE)
 
+}
+export function unformtJointer(dateFile: string): string {
+
+    return dateFile.replace(RegexEnum.FORMAT_DATE, "$1/$2/$3");
+}
+export function unFormtCheck(dateFile: string): boolean {
+    if (dateFile.match(RegexEnum.FORMAT_DATE)) {
+        return true
+    }
+    return false
 }
