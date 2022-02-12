@@ -1,10 +1,9 @@
 import { format, isValid } from 'date-fns';
-import { dateCheck, dateSplitter, unFormtCheck, unformtJointer } from '../commons/utils';
-import { RegexEnum } from '../commons/regex.enum';
+import { dateCheck, dateSplitter } from '../commons/utils';
 
 
 
-export function getDateRangeLimitUTC(dateRange: number, ChangeDate?: string): string {
+export function getAgeLimitUTC(dateRange: number, ChangeDate?: string): string {
     let DiffYear = 0;
     let actualYear = 0;
 
@@ -26,7 +25,7 @@ export function getDateRangeLimitUTC(dateRange: number, ChangeDate?: string): st
     return "Invalid Range";
 }
 
-export function getDateRangeLimitLocal(dateRange: number, ChangeDate?: string): string {
+export function getAgeLimitLocal(dateRange: number, ChangeDate?: string): string {
     let DiffYear = 0;
     let actualYear = 0;
     if (ChangeDate) {
@@ -47,23 +46,9 @@ export function getDateRangeLimitLocal(dateRange: number, ChangeDate?: string): 
     return "Invalid Range";
 }
 
-export function dateFormat(documentFormat: string): string | undefined {
-    if (documentFormat) {
-        if (unFormtCheck(documentFormat)) {
-            documentFormat =  unformtJointer(documentFormat);
-        }
-
-        if (!isValid(new Date(documentFormat))) {
-            return documentFormat;
-        }
-
-        return format(new Date(documentFormat), 'yyyy/dd/MM');
-    }
-    return 'Error';
-}
 
 
-export function dateFormatNew(dateRequest: string, formatStyle: string): string | number {
+export function dateFormat(dateRequest: string, formatStyle: string): string | number {
 
     let [day, month, year] = dateSplitter(dateRequest)
 
