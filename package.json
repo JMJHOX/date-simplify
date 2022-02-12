@@ -21,7 +21,7 @@
     "build:ci": "tsc --jsx react"
   },
   "dependencies": {
-    "core-js": "3.20.2",
+    "core-js": "3.20.3",
     "date-fns": "2.28.0",
     "ts-node": "10.4.0",
     "typescript": "^4.5.5"
@@ -79,7 +79,7 @@
       "<rootDir>/types/",
       "<rootDir>/lib/"
     ],
-    "testRegex": "/tests/.*\\.(test|spec)\\.(js|tsx?)$"
+    "testRegex": "/tests/.*\\.(test|spec).ts"
   },
   "eslintConfig": {
     "extends": "satya164"

@@ -117,7 +117,7 @@ export class AppComponent implements OnInit{
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-# getDateRangeLimitUTC
+# getAgeLimitOnUTC
 Is a method used to get the age limit of the user based on the actual date of the year or a custom date you want to use it from reference using UTC
 ## How to use it
 It has two parameters: 
@@ -128,7 +128,7 @@ dateRange: number(the number you want to limit)
 ChangeDate?: string (the date you migh want to use from reference, the format is dd/mm/yyyy)
 ```
 
-# getDateRangeLimitLocal
+# getAgeLimitOnLocal
 Is a method used to get the age limit of the user based on the actual date of the year or a custom date you want to use it from reference using your local time
 ## How to use it
 It has two parameters: 
@@ -140,10 +140,33 @@ ChangeDate?: string (the date you migh want to use from reference, the format is
 ```
 
 # dateFormat
-Is a function that formats any date to yyyy/mm/dd , if for some reasons, the date is impossible to get, it returns the same date introduced.
+Is a function that formats any date to you  want , if for some reasons, the date is impossible to get, it returns the same date introduced.
+
+
+## Structure
+```
+dateFormat(
+  dateRequest: string, 
+  formatStyle: string)
+
+```
+dateRequest is the date introduced on string format. it is a experimental feature, for now this kind of format is permitted to be used:
+      <ul>
+        <li>02-23-1998</li>
+        <li>02/23/1998</li>
+        <li>02231998</li>
+      </ul>
+
+formatStyle is the type of date you want to be returned or formatted, this is a list of formats you migh want to use:
+      <ul>
+        <li>ddMMyyyy</li>
+        <li>dd-MM-yyyy</li>
+        <li>ISO</li>
+        <li>UNIX</li>
+      </ul>
 ## How to use it
 ```
-dateSimplify.dateFormat('12121998')
+dateSimplify.dateFormat(dateRequest: string, formatStyle: string)
 ```
 It should Return 12/12/1998 on string format
 
