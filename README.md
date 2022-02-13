@@ -116,7 +116,6 @@ export class AppComponent implements OnInit{
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 # getAgeLimitOnUTC
 Is a method used to get the age limit of the user based on the actual date of the year or a custom date you want to use it from reference using UTC
 ## How to use it
