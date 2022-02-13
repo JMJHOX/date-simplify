@@ -1,0 +1,77 @@
+name: build,test and publish:master
+
+
+on:
+  workflow_call:
+      secrets:
+            SNYK_TOKEN:
+                required: true
+ 
+  push:
+    branches:
+      - 'development'
+
+
+jobs:
+  build:
+    name: Build and publish
+    runs-on: ubuntu-latest
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@jmjhox'
+      - name: Install dependencies
+        run: npm i
+      - name: Build
+        run: npm run build:ci
+      - name: Test
+        run: npm run test:date-simplify
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
+      - name: Archive code coverage result
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_coverage
+          path: coverage
+      - name: Auth User
+        run: |
+          git config --global user.name 'JMJHOX'
+          git config --global user.email 'josemiguelaparicio507@gmail.com'
+          
+      - name: look & publish library
+        run: npm version 1.0.${{github.run_number}} && npm publish --tag dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        
+  security:
+    runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm i
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+ 
+        with:
+          command: monitor
+        
+
