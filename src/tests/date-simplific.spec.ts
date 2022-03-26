@@ -153,27 +153,27 @@ describe('DateSimplifyService', () => {
 
 
   test('should return date format with unixFormatter01', () => {
-    const serviceResult = service.unixFormat(1648313180, 'dd-MM-yyyy')
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'dd-MM-yyyy')
     expect(serviceResult).toBe("26-03-2022");
   });
 
   test('should return date format with unixFormatter02', () => {
-    const serviceResult = service.unixFormat(1648313180, 'dd/MM/yyyy')
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'dd/MM/yyyy')
     expect(serviceResult).toBe("26/03/2022");
   });
 
   test('should return date format with unixFormatter03', () => {
-    const serviceResult = service.unixFormat(1648313180, 'ddMMyyyy')
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'ddMMyyyy')
     expect(serviceResult).toBe("26032022");
   });
 
   test('should return date format with unixFormatter04', () => {
-    const serviceResult = service.unixFormat(1648313180, 'rAMEM')
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'rAMEM')
     expect(serviceResult).toBe("Format not found");
   });
 
   test('should return date format with unixFormatter05', () => {
-    const serviceResult = service.unixFormat(1648313180, 'ISO')
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'ISO')
     expect(serviceResult).toBe("Format not found");
   });
 
