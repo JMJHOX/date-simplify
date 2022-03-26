@@ -1,18 +1,18 @@
 import { format } from 'date-fns';
 import { dateSimplify } from '..';
 
-describe('HelloComponent', () => {
+describe('DateSimplifyService', () => {
   let service = dateSimplify;
 
 
-   /*
-   * getAgeLimitUTC
-   */
+  /*
+  * getAgeLimitUTC
+  */
   test('should return correct date for restrict users below 18 years old on 1991 on UTC', () => {
     const serviceResult = service.getAgeLimitOnUTC(18, '2009');
     expect(serviceResult).toEqual('1991');
   });
- test('should return correct date for restrict users below 18 years old on any date on UTC', () => {
+  test('should return correct date for restrict users below 18 years old on any date on UTC', () => {
     const serviceResult = service.getAgeLimitOnUTC(5);
     const dateComp = String(new Date().getUTCFullYear() - Number(5));
     expect(serviceResult).toEqual(dateComp);
@@ -28,14 +28,14 @@ describe('HelloComponent', () => {
     expect(serviceResult).toBe('Invalid Range');
   });
 
- /*
-  * getAgeLimitLocal
- *
- * 
- */
+  /*
+   * getAgeLimitLocal
+  *
+  * 
+  */
 
 
- test('should return correct date for restrict users below 18 years old on 1990 on Local', () => {
+  test('should return correct date for restrict users below 18 years old on 1990 on Local', () => {
     const limitAge = 18;
     const limitYear = '2009';
     const serviceResult = service.getAgeLimitOnLocal(limitAge, limitYear);
@@ -100,58 +100,84 @@ describe('HelloComponent', () => {
   });
 
 
-    /*
-   * dateFormatNew
-   */
+  /*
+ * dateFormatNew
+ */
 
-    test('should return date format new function date 1', () => {
-      const serviceResult = service.dateFormat('02/23/1998','ddMMyyyy')
-      expect(serviceResult).toBe('02231998');
-    });
+  test('should return date format new function date 1', () => {
+    const serviceResult = service.dateFormat('02/23/1998', 'ddMMyyyy')
+    expect(serviceResult).toBe('02231998');
+  });
 
-    test('should return date format new function date 2', () => {
-      const serviceResult = service.dateFormat('02-23-1998','ddMMyyyy')
-      expect(serviceResult).toBe('02231998');
-    });
+  test('should return date format new function date 2', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'ddMMyyyy')
+    expect(serviceResult).toBe('02231998');
+  });
 
-    test('should return date format new function date 3', () => {
-      const serviceResult = service.dateFormat('02231998','ddMMyyyy')
-      expect(serviceResult).toBe('02231998');
-    });
+  test('should return date format new function date 3', () => {
+    const serviceResult = service.dateFormat('02231998', 'ddMMyyyy')
+    expect(serviceResult).toBe('02231998');
+  });
 
-    test('should return date format new function date 4', () => {
-      const serviceResult = service.dateFormat('02-23-1998','dd-MM-yyyy')
-      expect(serviceResult).toBe('02-23-1998');
-    });
-    
-    test('should return date format new function date 5', () => {
-      const serviceResult = service.dateFormat('02-23-1998','dd/MM/yyyy')
-      expect(serviceResult).toBe('02/23/1998');
-    });
+  test('should return date format new function date 4', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'dd-MM-yyyy')
+    expect(serviceResult).toBe('02-23-1998');
+  });
 
-    test('should return date format new function date 6', () => {
-      const serviceResult = service.dateFormat('02-23-1998','dd.MM.yyyy')
-      expect(serviceResult).toBe('02-23-1998');
-    });
+  test('should return date format new function date 5', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'dd/MM/yyyy')
+    expect(serviceResult).toBe('02/23/1998');
+  });
 
-    test('should return date format new function date ISO 1', () => {
-      const serviceResult = service.dateFormat('02-23-1998','ISO')
-      expect(serviceResult).toBe(new Date('02-23-1998').toISOString());
-    });
+  test('should return date format new function date 6', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'dd.MM.yyyy')
+    expect(serviceResult).toBe('02-23-1998');
+  });
 
-    test('should return date format new function date ISO 2', () => {
-      const serviceResult = service.dateFormat('02/23/1998','ISO')
-      expect(serviceResult).toBe(new Date('02/23/1998').toISOString());
-    });
+  test('should return date format new function date ISO 1', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'ISO')
+    expect(serviceResult).toBe(new Date('02-23-1998').toISOString());
+  });
 
-    test('should return date format new function date ISO 3', () => {
-      const serviceResult = service.dateFormat('02-23-1998','ISO')
-      expect(serviceResult).toBe(new Date('02/23/1998').toISOString());
-    });
+  test('should return date format new function date ISO 2', () => {
+    const serviceResult = service.dateFormat('02/23/1998', 'ISO')
+    expect(serviceResult).toBe(new Date('02/23/1998').toISOString());
+  });
 
-    test('should return date format new function date UNIX 1', () => {
-      const serviceResult = service.dateFormat('02-23-1998','UNIX')
-      expect(serviceResult).toBe(888192000000);
-    });
+  test('should return date format new function date ISO 3', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'ISO')
+    expect(serviceResult).toBe(new Date('02/23/1998').toISOString());
+  });
+
+  test('should return date format new function date UNIX 1', () => {
+    const serviceResult = service.dateFormat('02-23-1998', 'UNIX')
+    expect(serviceResult).toBe(888192000000);
+  });
+
+
+  test('should return date format with unixFormatter01', () => {
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'dd-MM-yyyy')
+    expect(serviceResult).toBe("26-03-2022");
+  });
+
+  test('should return date format with unixFormatter02', () => {
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'dd/MM/yyyy')
+    expect(serviceResult).toBe("26/03/2022");
+  });
+
+  test('should return date format with unixFormatter03', () => {
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'ddMMyyyy')
+    expect(serviceResult).toBe("26032022");
+  });
+
+  test('should return date format with unixFormatter04', () => {
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'rAMEM')
+    expect(serviceResult).toBe("Format not found");
+  });
+
+  test('should return date format with unixFormatter05', () => {
+    const serviceResult = service.unixFormat(1648313180 * 1000, 'ISO')
+    expect(serviceResult).toBe("Format not found");
+  });
 
 });
