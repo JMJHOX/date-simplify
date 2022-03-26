@@ -160,6 +160,7 @@ formatStyle is the type of date you want to be returned or formatted, this is a 
       <ul>
         <li>ddMMyyyy</li>
         <li>dd-MM-yyyy</li>
+        <li>dd/MM/yyyy</li>
         <li>ISO</li>
         <li>UNIX</li>
       </ul>
@@ -195,8 +196,29 @@ dateSimplify.dateFormat('02-23-1998', 'UNIX')
 ```
 It should Return 888192000000 on number format.
 
+# unixFormat
+Is a method that formats any kind of date to the want desired for the user, using UNIX format to be handled.
 
 
+## Structure
+```
+unixFormat(
+  dateRequest: nunmber, 
+  formatStyle: string)
+
+```
+dateRequest is the date introduced on string format. it is a experimental feature, for now this kind of format is permitted to be used:
+      <ul>
+        <li>1648313180</li>
+      </ul>
+
+formatStyle is the type of date you want to be returned or formatted, this is a list of formats you migh want to use:
+      <ul>
+        <li>ddMMyyyy</li>
+        <li>dd-MM-yyyy</li>
+        <li>dd/MM/yyyy</li>
+      </ul>
+  
 # dateIsValid
 method to check if a date is valid or not. it only returns false or true.
 ## How to use it

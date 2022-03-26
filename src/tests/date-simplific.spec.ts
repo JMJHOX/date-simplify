@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { dateSimplify } from '..';
 
-describe('HelloComponent', () => {
+describe('DateSimplifyService', () => {
   let service = dateSimplify;
 
 
