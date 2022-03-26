@@ -1,5 +1,5 @@
 import { format, isValid } from 'date-fns';
-import { dateCheck, dateSplitter } from '../commons/utils';
+import { dateCheck, dateFormatterUnix, dateSplitter } from '../commons/utils';
 
 
 
@@ -46,6 +46,13 @@ export function getAgeLimitOnLocal(dateRange: number, ChangeDate?: string): stri
 }
 
 
+
+export function unixFormat(dateRequest: number, formatStyle: string): string | number 
+{
+    
+        let [day, month, year]= dateSplitter(new Date(dateRequest * 1000).toLocaleDateString("en-GB"));
+       return dateFormatterUnix([day, month, year],formatStyle);
+}
 
 export function dateFormat(dateRequest: string, formatStyle: string): string | number {
 
