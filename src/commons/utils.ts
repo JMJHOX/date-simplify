@@ -15,6 +15,28 @@ export function checkDateMatch(documentRequest: string): string {
 
 
 }
+export function dateFormatterUnix(
+    [day, month, year]: string[],
+    formatStyle: string): string | number {
+    switch (formatStyle) {
+        case 'ddMMyyyy': {
+
+            return `${day}${month}${year}`
+        }
+        case 'dd-MM-yyyy': {
+
+            return `${day}-${month}-${year}`
+        }
+        case 'dd/MM/yyyy': {
+
+            return `${day}/${month}/${year}`
+        }
+        default: {
+
+            return "Format not found";
+        }
+    }
+}
 
 export function dateCheck(dateNumber: number, typeDate: string): string {
     let numberParser = dateNumber;
