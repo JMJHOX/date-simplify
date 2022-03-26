@@ -116,13 +116,12 @@ export class AppComponent implements OnInit{
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 # getAgeLimitOnUTC
 Is a method used to get the age limit of the user based on the actual date of the year or a custom date you want to use it from reference using UTC
 ## How to use it
 It has two parameters: 
 ```
-public getRangeLimit(dateRange: number, ChangeDate?: string)
+getAgeLimitOnUTC(dateRange: number, ChangeDate?: string)
 
 dateRange: number(the number you want to limit)
 ChangeDate?: string (the date you migh want to use from reference, the format is dd/mm/yyyy)
@@ -133,14 +132,14 @@ Is a method used to get the age limit of the user based on the actual date of th
 ## How to use it
 It has two parameters: 
 ```
-public getRangeLimit(dateRange: number, ChangeDate?: string)
+getAgeLimitOnLocal(dateRange: number, ChangeDate?: string)
 
 dateRange: number(the number you want to limit)
 ChangeDate?: string (the date you migh want to use from reference, the format is dd/mm/yyyy)
 ```
 
 # dateFormat
-Is a function that formats any date to you  want , if for some reasons, the date is impossible to get, it returns the same date introduced.
+Is a method that formats any kind of date to the want desired for the user, if for some reasons, the date is impossible to get, it returns the same date introduced.
 
 
 ## Structure
@@ -164,19 +163,39 @@ formatStyle is the type of date you want to be returned or formatted, this is a 
         <li>ISO</li>
         <li>UNIX</li>
       </ul>
+  
+Take in consideration that some formats as ddMMyyyy, dd-MM-yyyy and ISO returns a string on response using this function, meanwhile UNIX format returns a number on response.
+Formats like dd.MM.yyyy , MM.dd.yyyy and other kind, we are working to this combinations be implemented on our next release, for now it is not being supported.
 ## How to use it
-```
-dateSimplify.dateFormat(dateRequest: string, formatStyle: string)
-```
-It should Return 12/12/1998 on string format
 
-# dateFormatISO
-Is a function that formats any date to yyyy/mm/dd ISO FORMAT , if for some reasons, the date is impossible to get, it returns the same date introduced.
-## How to use it
+### ddMMyyyy
 ```
-dateSimplify.dateFormat('12101998')
+dateSimplify.dateFormat('02-23-1998', 'ddMMyyyy')
 ```
-It should Return 1998-10-12T00:00:00.000Z on string format
+It should Return 02231998 on string format.
+### dd-MM-yyyy
+
+```
+dateSimplify.dateFormat('02-23-1998', 'dd-MM-yyyy')
+```
+It should Return 02-23-1998 on string format.
+
+
+### ISO
+
+```
+dateSimplify.dateFormat('02-23-1998', 'ISO')
+```
+It should Return 1998-02-23T05:00:00.000Z on string format.
+
+
+### UNIX
+```
+dateSimplify.dateFormat('02-23-1998', 'UNIX')
+```
+It should Return 888192000000 on number format.
+
+
 
 # dateIsValid
 method to check if a date is valid or not. it only returns false or true.
