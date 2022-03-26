@@ -203,7 +203,7 @@ Is a method that formats any kind of date to the want desired for the user, usin
 ## Structure
 ```
 unixFormat(
-  dateRequest: nunmber, 
+  dateRequest: number, 
   formatStyle: string)
 
 ```
